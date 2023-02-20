@@ -1,0 +1,97 @@
+# Translation of Plugins - VK Block Patterns - Stable (latest release) in Japanese
+# This file is distributed under the same license as the Plugins - VK Block Patterns - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2022-12-15 05:09:44+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/4.0.0-alpha.3\n"
+"Language: ja_JP\n"
+"Project-Id-Version: Plugins - VK Block Patterns - Stable (latest release)\n"
+
+#: admin/admin.php:60 build/admin/index.js:1
+msgid "Patterns data cache setting"
+msgstr "パターンデータキャッシュ設定"
+
+#: favorite-patterns/favorite-patterns.php:115
+msgid "X-T9"
+msgstr "X-T9"
+
+#: admin/admin.php:185 admin/admin.php:195 admin/admin.php:207
+msgid "Dismiss"
+msgstr "このメッセージを表示しない"
+
+#: admin/admin.php:183 admin/admin.php:205
+msgid "Go to VK Block Patterns Setting"
+msgstr "VK Block Patterns 設定"
+
+#: admin/admin.php:56 build/admin/index.js:1
+msgid "Default Pattern Setting"
+msgstr "デフォルトパターン設定"
+
+#: favorite-patterns/favorite-patterns.php:86
+msgid "Favorites of VK Pattern Library"
+msgstr "VK Pattern Library のお気に入り"
+
+#: admin/admin.php:59 build/admin/index.js:1
+msgid "VK Pattern Library Setting"
+msgstr "VK Pattern Library 設定"
+
+#: vk-block-patterns.php:98
+msgid "Setting"
+msgstr "設定"
+
+#: inc/vk-admin/package/class-vk-admin.php:386
+msgid "Vektor WordPress Information"
+msgstr "Vektor WordPress Information"
+
+#: inc/vk-admin/package/class-vk-admin.php:332
+msgid "Sorry, there is no post"
+msgstr "投稿がありません"
+
+#: admin/admin.php:55 build/admin/index.js:1
+msgid "Role Setting"
+msgstr "権限設定"
+
+#: admin/admin.php:50
+msgid "Block Patterns Setting"
+msgstr "Block Patterns 設定"
+
+#: admin/admin.php:34
+msgctxt "label in admin menu"
+msgid "Block Patterns"
+msgstr "Block Patterns"
+
+#: admin/admin.php:33
+msgid "Block Patterns setting"
+msgstr "Block Patterns 設定"
+
+#: inc/vk-block-patterns/package/class-vk-block-patterns.php:55
+msgid "Category"
+msgstr "カテゴリー"
+
+#: inc/vk-block-patterns/package/class-vk-block-patterns.php:36
+msgid "Block Patterns"
+msgstr "ブロックパターン"
+
+#. Author URI of the plugin
+msgid "https://vektor-inc.co.jp"
+msgstr "https://vektor-inc.co.jp"
+
+#. Author of the plugin
+msgid "Vektor,Inc."
+msgstr "Vektor,Inc."
+
+#. Description of the plugin
+msgid "You can make and register your original custom block patterns."
+msgstr "独自のブロックパターンを作成して登録する事ができます。"
+
+#. Plugin URI of the plugin
+msgid "https://github.com/vektor-inc/vk-block-patterns"
+msgstr "https://github.com/vektor-inc/vk-block-patterns"
+
+#. Plugin Name of the plugin
+msgid "VK Block Patterns"
+msgstr "VK Block Patterns"

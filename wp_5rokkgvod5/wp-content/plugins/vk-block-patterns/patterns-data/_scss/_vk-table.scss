@@ -1,0 +1,52 @@
+/**
+ * Table class
+ * @since 1.17.0 
+ */
+ :root {
+	--vk-color-th-bg-bright: rgba( 0, 0, 0, 0.05 );
+ }
+.vk-table{
+	&--th {
+		&--width25 :where(tr > *:first-child){
+			width:25%;
+		}
+		&--width30 :where(tr > *:first-child){
+			width:30%;
+		}
+		&--width35 :where(tr > *:first-child){
+			width:35%;
+		}
+		&--width40 :where(tr > *:first-child){
+			width:40%;
+		}
+		&--bg-bright {
+			:where( tr > *:first-child ) {
+				background-color: var(--vk-color-th-bg-bright);
+			}
+		}
+	}
+	&--mobile-block{
+		@media ( max-width:599px ){
+			:is(th,td) {
+				width:100%;
+				display: block;
+				border-top:none;
+			}
+		}
+	}
+	// 1.16.0 以下古いクラス名につき使用不可
+	&--width{
+		&--th25 :where(tr > *:first-child){
+			width:25%;
+		}
+		&--th30 :where(tr > *:first-child){
+			width:30%;
+		}
+		&--th35 :where(tr > *:first-child){
+			width:35%;
+		}
+		&--th40 :where(tr > *:first-child){
+			width:40%;
+		}
+	}
+}
