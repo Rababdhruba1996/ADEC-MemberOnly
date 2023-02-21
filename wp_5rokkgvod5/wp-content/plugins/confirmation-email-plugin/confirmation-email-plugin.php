@@ -59,13 +59,13 @@ register_activation_hook( __FILE__, 'create_registration_request_table' );
  
  // Process new form submissions
 
-function process_new_registration($entry_id) {
+function process_new_registration() {
    global $wpdb;
    $table_name_1 = $wpdb->prefix . 'user_list';
    $table_name_2 = $wpdb->prefix . 'registration_request';
    global $wpdb;
   $entry_id = $wpdb->get_var( $wpdb->prepare( 
-     "SELECT MAX(entry_id) FROM wp_frmt_form_entry WHERE form_id = %d", 5 
+     "SELECT * /*MAX(entry_id)*/ FROM wp_frmt_form_entry WHERE form_id = %d", 363 
   ) );
    $results = $wpdb->get_results(
     $wpdb->prepare(
@@ -108,13 +108,7 @@ foreach ($results as $object) {
   //    $email = $object->meta_value;
   //    $domain = explode('@', $email)[1];
 if (in_array(substr(strrchr($email, "@"), 1), $allowed_domains)) {
-    // $first_name = $form_data['first_name'];
-    // $last_name = $form_data['last_name'];
-    // $email = $form_data['email'];
-    // $office_name = $form_data['office_name'];
-    // $department_name = $form_data['department_name'];
-    // $phone_number = $form_data['phone_number'];
-    // $consent = $form_data['consent'];
+    
     $query = $wpdb->prepare(
         "INSERT INTO ".$wpdb->prefix."user_list (first_name, last_name, email, office_name, department_name, phone_number, consent)
         VALUES (%s, %s, %s, %s, %s, %s, %s)",
