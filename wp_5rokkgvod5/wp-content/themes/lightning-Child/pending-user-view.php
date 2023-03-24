@@ -2,8 +2,65 @@
 /*
 Template Name: Pending User View Template
 */
-get_header();?>
+get_header();
+
+// Load WordPress functions
+require_once( ABSPATH . 'wp-includes/pluggable.php' );
+
+$table_name = $wpdb->prefix . 'register_request';
+if(isset($_POST['approve_id'])) {
+  // Get the user's email address from the database
+  $registration_id = intval($_POST['approve_id']);
+  $registration = $wpdb->get_row("SELECT * FROM $table_name WHERE id = $registration_id");
+  $to = $registration->email;
+
+  // Send the approval email
+  $user            = get_user_by( 'id', $user_id );
+	$site_name       = get_bloginfo( 'name' );
+  $login_page      = 'http://153.127.59.35/';
+	$key             = get_password_reset_key( $user );
+	$new_password    = wp_generate_password();
+	wp_set_password( $new_password, $user_id );
+  $subject = '登録承認';
+  $message = "{$user_login} 様,
+
+  <p>{$site_name}のアカウントが有効になりました!以下のログイン情報をご確認ください。</p>
+ 
+  <p>ログインページ: {$login_page}</p>
+ 
+  <p>ユーザーID: {$user_login}</p>
+ 
+  <p>
+  パスワード: {$new_password} <br />
+ 
+  </p>
+ 
+  <p>このメッセージは {$site_name} から送信されました</p>";
+  do_action( 'retrieve_password_key', $user_login, $key );
+  wp_mail($to, $subject, $message);
+  
+  // Remove the registration request from the database
+  $wpdb->delete($table_name, array('id' => $registration_id));
+}
+
+if(isset($_POST['deny_id'])) {
+  // Get the user's email address from the database
+  $registration_id = intval($_POST['deny_id']);
+  $registration = $wpdb->get_row("SELECT * FROM $table_name WHERE id = $registration_id");
+  $to = $registration->email;
+
+  // Send the denial email
+  $subject = '登録拒否';
+  $message = '申し訳ありませんが、登録は拒否されました。さらなる検証をお待ちください。';
+  wp_mail($to, $subject, $message);
+  
+  // Remove the registration request from the database
+  $wpdb->delete($table_name, array('id' => $registration_id));
+}
+?>
+
 <div class="page-content">
+
 <?php
 global $wpdb;
    $table_name = $wpdb->prefix . 'register_request';
@@ -29,12 +86,18 @@ global $wpdb;
    echo '<td>' . $registration->office_name . '</td>';
    echo '<td>' . $registration->department_name . '</td>';
    echo '<td>' . $registration->phone_number . '</td>';
-   // echo '<td>';
-   // echo '<button class="approve-registration" data-id="' . $registration->id . '"> Approve</button>';
-   // echo '</td>';
-   // echo '<td>';
-   // echo '<button class="deny-registration" data-id="' . $registration->id . '"> Deny</button>';
-   // echo '</td>';
+   echo '<td>';
+   echo '<form method="post">';
+      echo '<input type="hidden" name="approve_id" value="' . $registration->id . '">';
+      echo '<button type="submit" class="approve-registration"> Approve</button>';
+      echo '</form>';
+      echo '</td>';
+      echo '<td>';
+      echo '<form method="post">';
+      echo '<input type="hidden" name="deny_id" value="' . $registration->id . '">';
+      echo '<button type="submit" class="deny-registration"> Deny</button>';
+      echo '</form>';
+      echo '</td>';
    echo '</tr>';
    }
    echo '</table>';
@@ -43,6 +106,8 @@ global $wpdb;
    }
    ?>
 </div>
+
+
 <style>
 .page-content {
   margin: 50px;

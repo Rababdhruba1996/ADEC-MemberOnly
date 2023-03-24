@@ -170,13 +170,16 @@ function send_notification_email($email) {
   wp_mail($to, $subject, $message, $headers);
   }
 
-function remove_home_breadcrumb( $crumbs ) {
-    if ( isset( $crumbs[0] ) && $crumbs[0] === 'Home' ) {
-        array_shift( $crumbs );
+function remove_home_breadcrumb( $breadcrumb ) {
+    if( count($breadcrumb) > 1 ) {
+        array_shift($breadcrumb);
     }
-    return $crumbs;
+    return $breadcrumb;
 }
+add_filter( 'lightning_breadcrumb_lists', 'remove_home_breadcrumb' );
+
 if ( ! current_user_can( 'edit_posts' ) ) {
   show_admin_bar( false );
 }
+
 ?>
