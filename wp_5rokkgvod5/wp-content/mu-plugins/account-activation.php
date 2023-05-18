@@ -27,15 +27,15 @@ function wpmudev_forminator_filter_user_register_email( int $user_id, array $use
 		wp_update_user( $new_user_data );
 
 		// Send a different email to the user
-		// add_filter(
-		// 	'wp_mail',
-		// 	function ( array $mail_args ) use ( $userdata ) {
-		// 		$mail_args['to'] = $userdata['user_email'];
-		// 		$mail_args['subject'] = 'アカウントの確認';
-		// 		$mail_args['message'] = '当サイトへのご登録ありがとうございます。お客様のアカウントは現在手動で審査中です。確認が完了次第、お知らせいたします。';
-		// 		return $mail_args;
-		// 	}
-		// );
+		add_filter(
+			'wp_mail',
+			function ( array $mail_args ) use ( $userdata ) {
+				$mail_args['to'] = $userdata['user_email'];
+				$mail_args['subject'] = 'アカウントの確認';
+				$mail_args['message'] = '当サイトへのご登録ありがとうございます。お客様のアカウントは現在手動で審査中です。確認が完了次第、お知らせいたします。';
+				return $mail_args;
+			}
+		);
 
 		return;
 		remove_action( 'user_register', 'wpmudev_forminator_filter_user_register_email' );

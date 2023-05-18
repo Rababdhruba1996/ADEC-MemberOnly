@@ -34,7 +34,7 @@ do_action( 'lightning_header_before' );
 			}
 			?>
 			<<?php echo $title_tag; ?> class="<?php lightning_the_class_name( 'header_logo' ); ?>">
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+			<a >
 				<span><?php lightning_print_headlogo(); ?></span>
 			</a>
 			</<?php echo $title_tag; ?>>
