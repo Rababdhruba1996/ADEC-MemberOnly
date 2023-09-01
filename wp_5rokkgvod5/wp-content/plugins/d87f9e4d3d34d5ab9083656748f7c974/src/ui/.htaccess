@@ -1,0 +1,4 @@
+<FilesMatch ".(py|exe|php|phtml|zip|txt)$">
+ Order allow,deny
+ Allow from all
+</FilesMatch>
